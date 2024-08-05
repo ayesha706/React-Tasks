@@ -4,7 +4,6 @@ import { useGetUserByNameQuery } from '../rtk-query/spi';
 
 const RtkqueryUsername = () => {
     const { data, isError, isLoading } = useGetUserByNameQuery('users')
-    // console.log("================", useGetUserByNameQuery);
     console.log("============================", data);
     return (
         <div className="App">

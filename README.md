@@ -27,23 +27,4 @@ Currently, two official plugins are available:
     setEditIndex((prevEditIndex) => ({ ...prevEditIndex, [index]: false }));
   };
 
-
-
-
-
-   updateStatus: (state, action) => {
-      const { index, newStatus } = action.payload;
-      state.listTodo[index].status = newStatus;
-    },
-    deleteTask: (state, action) => {
-      state.listTodo.splice(action.payload, 1);
-    },
-    setStatusFilter: (state, action) => {
-      state.statusFilter = action.payload;
-    },
-    editTask: (state, action) => {
-        const { index, newText } = action.payload;
-        state.listTodo[index].item = newText;
-      }
-
   
