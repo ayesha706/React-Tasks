@@ -1,0 +1,16 @@
+.textcolor{
+    color: #62827E;
+}
+.backcolor{
+    background-color: #e98585;
+
+}
+.buttoncolor{
+    background-color: #ABDEDA;
+}
+/* .h1backcolor{
+    background-color: #FCAB97;
+} */
+#root{
+    min-height: 100vh;
+}
