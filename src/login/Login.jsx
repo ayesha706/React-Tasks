@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
+import { useLoginUsersMutation } from "../rtk-query/userSlice";
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -7,10 +8,11 @@ export default function Login() {
   const [emailmessage, setEmailMessage] = useState('');
   const [passwordmessage, setPasswordMessage] = useState('');
   const navigate = useNavigate();
-
+  const [loginUser] = useLoginUsersMutation();
 
   const handleEmail = (e) => {
     let inputValue = e.target.value;
+ 
     setEmail(inputValue);
     let emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     if (!emailRegex.test(inputValue)) {
@@ -22,8 +24,9 @@ export default function Login() {
 
   const handlePassword = (e) => {
     setPassword(e.target.value);
-    if (password.length < 6) {
-      setPasswordMessage('The password must be 6 characters or longer')
+  
+    if (password.length < 3) {
+      setPasswordMessage('The password must be 4 characters or longer')
     }
     else {
       setPasswordMessage('');
@@ -32,6 +35,7 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    loginUser({ email ,password})
     if (!email == emailmessage && !password == passwordmessage)
       navigate('/');
     else {

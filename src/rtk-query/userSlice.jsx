@@ -4,10 +4,15 @@ export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000/api" }),
   endpoints: (builder) => ({
-    getUsers: builder.query({
-      query: () => "/register",
-    })
+    loginUsers: builder.mutation({
+      query: info => ({
+        url: "/login",
+        method: "POST",
+        body: info,
+      })
+    }),
+
   }),
 });
 
-export const { useGetUsersQuery} = apiSlice;
+export const { useLoginUsersMutation} = apiSlice;
