@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
-export default function Login() {
+export default function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailmessage, setEmailMessage] = useState('');
   const [passwordmessage, setPasswordMessage] = useState('');
   const navigate = useNavigate();
 
-
+  
   const handleEmail = (e) => {
     let inputValue = e.target.value;
     setEmail(inputValue);
@@ -45,6 +45,15 @@ export default function Login() {
         onSubmit={handleSubmit}
         className="max-w-screen-lg mt-8 mb-2 w-80 sm:w-96">
         <div className="flex flex-col gap-6 mb-1">
+          <h6 className="font-semibold text-blue-gray-900">User Name</h6>
+          <div className="h-11 w-full min-w-[200px]">
+            <input
+              type="text"
+              placeholder="name"
+              required
+              className="h-full w-full rounded-md border border-blue-gray-200 px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 focus:border-2 focus:border-gray-900"
+            />
+          </div>
           <h6 className="font-semibold text-blue-gray-900">Your Email <span className='text-red-500'> {emailmessage}</span></h6>
           <div className="relative h-11 w-full min-w-[200px]">
             <input

@@ -9,6 +9,7 @@ import { Layout } from './to-do-list/components/Layout'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { UsernameSearch } from './username-search/UsernameSearch'
 import RtkqueryUsername from './username-search/RtkqueryUsername'
+import Signup from './login/Signup'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path='/stock-data' element={<AlphaVantage />} />
           {/* <Route path="/username-data" element={<UsernameSearch/>} /> */}
           <Route path="/username-data" element={<RtkqueryUsername/>} />
+          <Route path="/signup" element={<Signup/>} />
         </Routes>
         </div>
       </BrowserRouter>

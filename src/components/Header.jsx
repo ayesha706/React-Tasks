@@ -34,6 +34,7 @@ export const Header = () => {
           {isDarkMode ? <FaSun /> : <FaMoon />}
         </div>
           <div><Link to="/login">Login</Link></div>
+          <div  className='pl-2'><Link to="/signup">Sign Up</Link></div>
         </div>
       </nav>
     </div>
