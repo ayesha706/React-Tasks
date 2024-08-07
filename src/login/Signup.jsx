@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-
+import { useRegisterUserMutation } from '../rtk-query/userSlice';
+import '../App.css';
 export default function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] =useState();
   const [emailmessage, setEmailMessage] = useState('');
   const [passwordmessage, setPasswordMessage] = useState('');
   const navigate = useNavigate();
-
+  const [signupUsers, { isError }] = useRegisterUserMutation();
   
   const handleEmail = (e) => {
     let inputValue = e.target.value;
@@ -22,8 +24,8 @@ export default function Signup() {
 
   const handlePassword = (e) => {
     setPassword(e.target.value);
-    if (password.length < 6) {
-      setPasswordMessage('The password must be 6 characters or longer')
+    if (password.length < 3) {
+      setPasswordMessage('The password must be 4 characters or longer')
     }
     else {
       setPasswordMessage('');
@@ -32,11 +34,12 @@ export default function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!email == emailmessage && !password == passwordmessage)
-      navigate('/');
-    else {
-      alert('Set your Credentials');
-    }
+    signupUsers({name, email, password})
+    if (email == isError && password == isError)
+      alert({isError});
+    if (!email == isError && !password == isError)
+      alert("User registered successfully")
+      navigate('/login');
   };
 
   return (
@@ -51,7 +54,9 @@ export default function Signup() {
               type="text"
               placeholder="name"
               required
-              className="h-full w-full rounded-md border border-blue-gray-200 px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 focus:border-2 focus:border-gray-900"
+              value={name}
+              onChange={(e)=>setName(e.target.value)}
+              className=" textcolor h-full w-full rounded-md border border-blue-gray-200 px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 focus:border-2 focus:border-gray-900"
             />
           </div>
           <h6 className="font-semibold text-blue-gray-900">Your Email <span className='text-red-500'> {emailmessage}</span></h6>
@@ -62,7 +67,7 @@ export default function Signup() {
               required
               value={email}
               onChange={handleEmail}
-              className="h-full w-full rounded-md border border-blue-gray-200 px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 focus:border-2 focus:border-gray-900"
+              className="  textcolor h-full w-full rounded-md border border-blue-gray-200 px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 focus:border-2 focus:border-gray-900"
             />
           </div>
           <h6 className="font-semibold text-blue-gray-900">Password <span className='text-red-500'> {passwordmessage}</span></h6>
@@ -73,7 +78,7 @@ export default function Signup() {
               required
               value={password}
               onChange={handlePassword}
-              className="h-full w-full rounded-md border border-blue-gray-200 px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 focus:border-2 focus:border-gray-900"
+              className="h-full  textcolor w-full rounded-md border border-blue-gray-200 px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 focus:border-2 focus:border-gray-900"
             />
           </div>
         </div>

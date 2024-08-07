@@ -34,7 +34,9 @@ module.exports.loginUser = async (req, res) => {
                 jwt.sign({
                     email
                 }, process.env.JWT_SECRET, { expiresIn: '1h' });
-            res.status(200).json({ msg: 'Logged in successully', token })
+            res.status(200).json({ msg: 'Logged in successully', token,
+                user
+             })
 
         } else {
             res.status(401).json({ msg: 'Invalid email or password' })

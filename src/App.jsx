@@ -10,6 +10,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { UsernameSearch } from './username-search/UsernameSearch'
 import RtkqueryUsername from './username-search/RtkqueryUsername'
 import Signup from './login/Signup'
+import Dashboard from './components/Dashboard'
+
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
           {/* <Route path="/username-data" element={<UsernameSearch/>} /> */}
           <Route path="/username-data" element={<RtkqueryUsername/>} />
           <Route path="/signup" element={<Signup/>} />
+          <Route path="/dashboard/:userId" element={<Dashboard/>} />
         </Routes>
         </div>
       </BrowserRouter>

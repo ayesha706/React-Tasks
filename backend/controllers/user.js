@@ -24,7 +24,6 @@ module.exports.getUserById = async (req, res) => {
     } catch (err) {
         res.status(400).json(({ msg: 'Something went wrong' }))
     }
-
 }
 
 module.exports.deleteUserById = async (req, res) => {

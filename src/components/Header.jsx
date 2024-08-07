@@ -28,13 +28,16 @@ export const Header = () => {
           <div className='pr-3'>
             <Link to="/username-data">UserName Data</Link>
           </div>
+          <div className='pr-3'>
+            <Link to="/dashboard">Dashboard</Link>
+          </div>
         </div>
         <div className='flex'>
-        <div className='p-2 cursor-pointer' onClick={toggleDarkMode}>
-          {isDarkMode ? <FaSun /> : <FaMoon />}
-        </div>
+          <div className='p-2 cursor-pointer' onClick={toggleDarkMode}>
+            {isDarkMode ? <FaSun /> : <FaMoon />}
+          </div>
           <div><Link to="/login">Login</Link></div>
-          <div  className='pl-2'><Link to="/signup">Sign Up</Link></div>
+          <div className='pl-2'><Link to="/signup">Sign Up</Link></div>
         </div>
       </nav>
     </div>
